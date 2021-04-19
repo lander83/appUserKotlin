@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">App de Usuarios</string>
+    <string name="label_item_user_number_of_users">Numero de Usuarios:</string>
+    <string name="menu_text_all_users">Todos los Usuarios</string>
+    <string name="menu_text_favorite_users">Usuario Favorito</string>
+    <string name="open_in_browser">Abrir en Browser</string>
+</resources>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="user"
+            type="com.example.appusers.data.models.DetailUser" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_light">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/avatar_image_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:0.9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars[2]" />
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/margin_large"
+            app:layout_constraintBottom_toTopOf="@+id/open_browser_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/avatar_image_view">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@{user.username}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    app:visibilityByText="@{user.username}"
+                    tools:text="@tools:sample/full_names[3]" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="24sp"
+                    app:nickname="@{user.email}"
+                    tools:text="@tools:sample/first_names[3]" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@{user.phone}"
+                    android:textSize="20sp"
+                    app:visibilityByText="@{user.phone}"
+                    tools:text="@tools:sample/cities[9]" />
+            </LinearLayout>
+        </ScrollView>
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/loading_bar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/scroll_view"
+            app:layout_constraintEnd_toEndOf="@+id/scroll_view"
+            app:layout_constraintStart_toStartOf="@+id/scroll_view"
+            app:layout_constraintTop_toTopOf="@+id/scroll_view"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/retry_button"
+            style="@style/Widget.GitHubUserList.Clickable.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/scroll_view"
+            app:layout_constraintEnd_toEndOf="@+id/scroll_view"
+            app:layout_constraintStart_toStartOf="@+id/scroll_view"
+            app:layout_constraintTop_toTopOf="@+id/scroll_view"
+            app:srcCompat="@drawable/ic_refresh_black_48dp"
+            tools:visibility="visible" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/open_browser_button"
+            style="@style/Widget.GitHubUserList.RoundButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                style="@style/Widget.GitHubUserList.RoundButton.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:visibilityByText="@{user.website}"
+                android:text="@string/open_in_browser" />
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
